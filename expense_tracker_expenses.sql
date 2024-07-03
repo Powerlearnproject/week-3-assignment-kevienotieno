@@ -54,3 +54,24 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-06-22 20:44:49
+
+-- 1.1. Total Spent per Category: Write a query to find the total amount you spent in each category (Groceries, Entertainment, etc.). Hint: Use GROUP BY category and SUM(amount).
+
+SELECT category, SUM(amount) AS Total_Spent
+FROM expenses
+GROUP BY category;
+
+-- 1.2. Average Expense per Category: Now, let's see the average cost for each category. Write a query to find the average expense amount for each category. Hint: Use GROUP BY category and AVG(amount).
+
+SELECT category, ROUND(AVG(amount), 2) AS Average_Cost
+FROM expenses
+GROUP BY category;
+
+-- Bonus Challenge (Optional):
+-- Are you curious about your top spending categories? Modify your query from Challenge 1 to show only the top 3 (or a chosen number) categories where you spend the most.
+
+SELECT category, SUM(amount) AS Total_Spent
+FROM expenses
+GROUP BY category
+ORDER BY Total_Spent DESC
+LIMIT 3;
